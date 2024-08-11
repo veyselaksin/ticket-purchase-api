@@ -1,8 +1,8 @@
-# TEK-BANK
+# Ticket Management System
 ## Description
-TEK-BANK is a Teknasyon project that is a simple bank account management case study.
+This project is a ticket management system. The project is developed with the Clean Architecture approach. The project is developed with the DDD approach. The project is developed with the SOLID principles.
 
-**NOTE!** I just only write unit tests for the `account` service. I didn't write unit tests for the other services and repositories because of the time constraint. 
+**NOTE!** I just only write unit tests for the `ticket` service. I didn't write unit tests for the other services and repositories because of the time constraint. 
 That doesn't mean I don't know how to write unit tests. I know how to write unit tests. I just didn't write them because of the time constraint.
 
 # Requirements
@@ -11,11 +11,8 @@ That doesn't mean I don't know how to write unit tests. I know how to write unit
 - Docker Compose
 - Swagger
 - PostgreSQL
-- Redis
-- GoMailer Package
 - Fiber
 - Gorm
-- JWT
 - Mockgen
 - Nginx
 - Dockerfile
