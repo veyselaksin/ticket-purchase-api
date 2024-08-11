@@ -1,0 +1,128 @@
+basePath: /v1
+definitions:
+  dto.TicketCreateRequest:
+    properties:
+      allocation:
+        type: integer
+      desc:
+        type: string
+      name:
+        type: string
+    type: object
+  dto.TicketPurchaseRequest:
+    properties:
+      quantity:
+        type: integer
+      user_id:
+        type: string
+    type: object
+  dto.TicketResponse:
+    properties:
+      allocation:
+        type: integer
+      desc:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+info:
+  contact:
+    email: fiber@swagger.io
+    name: API Support
+  description: This is a config for Teknasyon Case Study API.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Teknasyon Case Study API
+  version: "1.0"
+paths:
+  /health:
+    get:
+      consumes:
+      - application/json
+      description: Health Check for the API
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Health Check API
+      tags:
+      - Health Check
+  /tickets:
+    post:
+      consumes:
+      - application/json
+      description: Create a new ticket
+      parameters:
+      - description: Ticket data
+        in: body
+        name: ticket
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TicketCreateRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/dto.TicketResponse'
+      summary: Create a new ticket
+      tags:
+      - Ticket
+  /tickets/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get ticket by ID
+      parameters:
+      - description: Ticket ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.TicketResponse'
+      summary: Get ticket by ID
+      tags:
+      - Ticket
+  /tickets/{id}/purchase:
+    post:
+      consumes:
+      - application/json
+      description: Purchase a ticket
+      parameters:
+      - description: Ticket ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Purchase data
+        in: body
+        name: purchase
+        required: true
+        schema:
+          $ref: '#/definitions/dto.TicketPurchaseRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: object
+      summary: Purchase a ticket
+      tags:
+      - Ticket
+swagger: "2.0"
